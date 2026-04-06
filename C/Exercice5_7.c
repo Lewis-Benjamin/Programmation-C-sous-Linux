@@ -8,13 +8,11 @@ double u = 1.0;           // variable globale
 int compteur = 0;          // compteur global
 pthread_mutex_t lock;      // mutex
 
-// fonction f1(x) = (x-1)^2 / 4
 double f1(double x)
 {
     return ((x - 1) * (x - 1)) / 4.0;
 }
 
-// fonction f2(x) = (x-2)^2 / 6
 double f2(double x)
 {
     return ((x - 2) * (x - 2)) / 6.0;
