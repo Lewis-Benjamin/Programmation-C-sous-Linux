@@ -12,7 +12,8 @@ pthread_mutex_t lock;
 // Thread 1 : calcul des moyennes
 void *moyenne(void *arg)
 {
-    while (1) {
+    while (1)
+    {
         pthread_mutex_lock(&lock);
 
         // Tableau temporaire pour stocker les nouvelles valeurs
