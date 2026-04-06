@@ -4,20 +4,23 @@
 #include <time.h>
 #include <unistd.h>
 
-typedef struct {
+typedef struct
+{
     int *tab;
     int taille;
 } Tableau;
 
 // Génération aléatoire
-void *generer(void *arg) {
+void *generer(void *arg)
+{
     int taille = *((int *)arg);
 
     Tableau *t = malloc(sizeof(Tableau));
     t->taille = taille;
     t->tab = malloc(taille * sizeof(int));
 
-    for (int i = 0; i < taille; i++) {
+    for (int i = 0; i < taille; i++)
+    {
         t->tab[i] = rand() % 100;
     }
 
@@ -25,7 +28,8 @@ void *generer(void *arg) {
 }
 
 // Vérifie si T1 ⊂ T2
-void *inclusion(void *arg) {
+void *inclusion(void *arg)
+{
     Tableau **tabs = (Tableau **)arg;
     Tableau *T1 = tabs[0];
     Tableau *T2 = tabs[1];
@@ -33,17 +37,21 @@ void *inclusion(void *arg) {
     int *res = malloc(sizeof(int));
     *res = 1;
 
-    for (int i = 0; i < T1->taille; i++) {
+    for (int i = 0; i < T1->taille; i++)
+    {
         int trouve = 0;
 
-        for (int j = 0; j < T2->taille; j++) {
-            if (T1->tab[i] == T2->tab[j]) {
+        for (int j = 0; j < T2->taille; j++)
+        {
+            if (T1->tab[i] == T2->tab[j])
+            {
                 trouve = 1;
                 break;
             }
         }
 
-        if (!trouve) {
+        if (!trouve)
+        {
             *res = 0;
             break;
         }
@@ -52,13 +60,16 @@ void *inclusion(void *arg) {
     return (void *)res;
 }
 
-void *annulation(void *arg) {
+void *annulation(void *arg)
+{
     char c;
     printf("Appuyez sur 'A' pour annuler...\n");
 
-    while (1) {
+    while (1)
+    {
         c = getchar();
-        if (c == 'A' || c == 'a') {
+        if (c == 'A' || c == 'a')
+        {
             printf("Programme annulé !\n");
             exit(0);
         }
